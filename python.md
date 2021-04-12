@@ -48,6 +48,13 @@ import copy
 浅拷贝：只拷贝顶级的对象，或者说父级对象    copy()      
 深拷贝：拷贝所有的对象，顶级对象及其嵌套对象。或者说父级对象及其子对象   deepcopy()     
 
+Python中的等号并不像很多静态语言一样是所谓“赋值”“修改”的含义，它是替换，是将一个引用指到一个新对象上去      
+list 是一个容器，容器里面存放对每个对象的引用   
+```Python
+li = [1, 2]
+# li[:] 表示对原对象的引用，此处语句作用类似 clear
+li[:] = []
+```
 Python的参数传递是值传递还是引用传递:
 - 不可变参数用值传递
 - 可变参数是用引用传递
@@ -659,8 +666,8 @@ else:
 
 - 闭包 = 函数 + 变量 ， 闭包使得变量的值始终保存在内存中。
 - 使用闭包的好处：
-    - 闭包避免了使用p全局变量
-    - 闭包允许将函数与其所操作的某些数据（环境）关连起来
+    - 闭包避免了使用全局变量
+    - 闭包允许将函数与其所操作的某些数据（环境）关联起来
     - 当对象中只有一个方法时，这时使用闭包是更好的选择
     ```Python
     def adder(x):
@@ -724,3 +731,47 @@ else:
 
 正则：  
 十六进制：\b0[xX][0-9a-fA-F]+\b 
+
+and 运算级大于 or
+```Python
+>>> (True or False) and False
+>>> True or False and False
+```
+
+value += 1 不是线程安全
+
+function：独立定义
+method：类中定义，分为 static method、class method 、instance method
+```Python
+class A(object):
+    def f(self):
+        return 1
+a = A()
+
+print('#### 各自方法等效调用 ####')
+print('## 类方法 %s' % A.f(a))   #传入A的实例a
+print('## 实例方法 %s' % a.f())
+```
+## 编程风格
+- 条件判断少用否定: not a or not b == not (a and b)
+- 函数是否应该返回 None 可以参考函数名
+- 只做精准的异常捕获
+- SOLID 原则
+    - 单一职责
+    - 对扩展开放，对修改关闭
+    - 里氏替换,子类可以替代父类
+    - 接口隔离，客户不应该依赖任何它不使用的方法
+    - 依赖倒置，高层模块和低层模块都应该依赖于抽象
+- LBYL：Look Before You Leap
+- EAFP：Easier to Ask for Forgiveness than Permission
+
+```Python
+a = ("a", "b", "c", "d", "e", "f", "g", "h")
+x = slice(2)
+print(x)
+# output
+# slice(None, 2, None)
+```
+
+iter()，把可迭代对象变成迭代器  
+用 pathlib 模块操作文件

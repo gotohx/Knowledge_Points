@@ -775,3 +775,27 @@ print(x)
 
 iter()，把可迭代对象变成迭代器  
 用 pathlib 模块操作文件
+
+
+__slots__ ：通过避免定义动态的数据结构 __dict__ 来实现对 memory 的节省；Python 为每一个实例都创建了一个字典
+
+
+```Python
+f = open('photo.jpg', 'r+')
+jpgdata = f.read()
+f.close()
+```
+上述代码缺点：  
+- 如果 open 后出现某个错误，close 将不会执行
+
+context manager
+```Python
+class File(object):
+    def __init__(self, file_name, method):
+        self.file_obj = open(file_name, method)
+    def __enter__(self):
+        return self.file_obj
+    # __exit__ accepts three arguments. They are required by every __exit__ method
+    def __exit__(self, type, value, traceback):
+        self.file_obj.close()
+```

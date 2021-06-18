@@ -80,7 +80,7 @@ drop table Jobs
 插入数据：
 INSERT INTO table_name (列1, 列2,...) VALUES (值1, 值2,....)    
     
-select查询可以是属性列，表达式，长亮，函数  
+select查询可以是属性列，表达式，常量，函数  
 查询全体学生的姓名和出生年份，并在出生年份前加入一个列，此列的每行数据均为”出生年份“    
 select Sname, '出生年份'， 2019-age
 
@@ -134,6 +134,9 @@ select * from Student order by Sage       --默认升序
 select * from Student   
     order by Sdep asc, Sage desc    
 
+UPDATE table_name
+SET column1 = value1, column2 = value2, ...
+WHERE condition;
 
 聚合函数(不能出现在where中) 
 count ：统计元组个数， 不忽略null值 

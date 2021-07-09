@@ -269,7 +269,7 @@ ps :磁盘ＩＯ：　移动动臂（找到盘面），盘面旋转
 
 
 ## redis 有哪些数据结构
-String、List、Set、Hash、ZSet   
+String、List、Set、Hash、ZSet(SortedSet)   
 
 ## redis 为什么快
 - 完全基于内存
@@ -288,7 +288,7 @@ String、List、Set、Hash、ZSet
 - 每一个节点的层数（level）是随机出来的，而且新插入一个节点不会影响其它节点的层数。
 - 插入操作只需要修改插入节点前后的指针，而不需要对很多节点都进行调整
 - 并发环境下锁的东西比较少
-      
+
 
 ## 使用Redis时，对热点key怎么解决？
 - 热点 key：访问频率高的key
